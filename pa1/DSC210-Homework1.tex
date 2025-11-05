@@ -1,0 +1,237 @@
+% Contributions are much appreciated, in order to contribute to this project, head over to this repository:
+% https://github.com/bshramin/uofa-eng-assignment
+
+\documentclass[11pt,letterpaper]{article}
+\textwidth 6.5in
+\textheight 9.in
+\oddsidemargin 0in
+\headheight 0in
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig,graphicx}
+\usepackage{multicol,pst-plot}
+\usepackage{pstricks}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\pagestyle{empty}
+\DeclareMathOperator{\tr}{Tr}
+\newcommand*{\op}[1]{\check{\mathbf#1}}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\mean}[1]{\langle #1 \rangle}
+\newcommand{\opvec}[1]{\check{\vec #1}}
+\renewcommand{\sp}[1]{$${\begin{split}#1\end{split}}$$}
+
+\usepackage{lipsum}
+
+\usepackage{listings}
+\usepackage{soul}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\pagestyle{plain}
+
+
+% \begin{flushright}\vspace{-5mm}
+% \includegraphics[height=2cm]{logo.png}
+% \end{flushright}
+ 
+\begin{center}
+\textbf{\Large DSC 210 Numerical Linear Algebra, Fall 2025} \\ \bigskip
+\large{Homework problems for Topic 1: \textit{Linear Algebra Basics}} \\  \bigskip
+\begin{flushleft}
+    \large{Student Name (PID):}
+\end{flushleft}
+\end{center}
+\vspace{-4mm}
+\rule{\linewidth}{0.1mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \bigskip
+\bigskip
+
+\begin{enumerate}
+
+\item[] \fbox{%
+\begin{minipage}{0.95\textwidth}
+Write your solutions to the following problems by typing them in \LaTeX. Unless otherwise noted by the
+problem's instructions, show your work and provide justification for
+your answer. Homework is due via Gradescope at \textbf{23rd October 2025, 11:59 PM}.
+\\
+\textbf{Late Policy}: If you submit your homework after the deadline we will apply a late penalty of $10\%$ per day.
+
+\item[] \textbf{Guidelines for Homework Related Questions:}
+\begin{enumerate}
+    \item As a general rule, we can help you understand the homework problems and explain the material from the corresponding lectures, but we cannot give you the entire solution.
+    \item Regarding debugging programming questions: We ask you to do some debugging on your own first, including printing out intermediate values in your algorithms, trying a simpler version of the problem, etc.
+    \item We will not be pre-grading the homework, i.e. we won’t confirm if the answer you have is correct.
+\end{enumerate}
+
+\item[] \textbf{AI Usage Policy:}
+\begin{enumerate}
+    \item Code: You may use LLMs to debug your code; however, you may not use LLMs to generate your entire code, and code must be reviewed and tested.
+    \item Writing: You may use LLMs to correct grammar, style and latex issues; however, you may not use LLMs to generate entire solutions, sentences or paragraphs. All writing must be in your own voice.
+\end{enumerate}
+
+\item [] \textbf{Academic Integrity Policy:}
+\begin{enumerate}
+    \item [] The UC San Diego Academic Integrity Policy (formerly the Policy on Integrity of Scholarship) is effective as of September 25, 2023 and applies to any cases originating on or after September 25, 2023. The university expects both faculty and students to honor the policy. For students, this means that all academic work will be done by the individual to whom it's assigned, without unauthorized aid of any kind. If violations of academic integrity occur, the same Sanctioning Guidelines apply regardless of which policy was effective for that case.
+    
+    For more information on how the policy is implemented, refer to the most current procedures. Remember: When in doubt about what constitutes appropriate collaboration or resource use, please ask TAs before proceeding. It's always better to clarify expectations than to risk an academic integrity violation. Academic integrity violations can have serious consequences for your academic record, and you will get zero grades.
+\end{enumerate}
+
+
+
+You can access the Homework Template using the following link: \url{https://www.overleaf.com/read/vfhcmsppvskp}
+\end{minipage}}
+
+%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 1: Property of triangular matrices (20 points)} 
+%%%%%%%%%%%%%%%
+
+Given $L_1$ and $L_2$ are two lower triangular matrices of size $n\times n$, prove that $L_1L_2$ is also a lower triangular matrix. Further, prove by induction that multiplication of $m\,(m>2)$ lower triangular matrices ($L_1, L_2,..., L_m$) is also a lower triangular matrix.
+
+\textbf{Solution:}
+
+%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 2: Matrix operations (20 points)} 
+%%%%%%%%%%%%%%%
+
+Let $\mathbf{B}$ be a $4\times 4$ matrix to which we apply the following 7 operations sequentially and get a final matrix $\mathbf{D}$:
+\begin{enumerate}[label=(\roman*),align=left]
+    \item double column 1,
+    \item halve row 3,
+    \item add row 1 to row 4,
+    \item interchange columns 2 and 3,
+    \item subtract row 2 from each of the other rows,
+    \item replace column 4 by column 1,
+    \item delete column 2 (so that the column dimension is reduced by 1).
+\end{enumerate}
+\begin{enumerate}
+    \item Express each operation (i) to (vii) as a matrix and  the final matrix $\mathbf{D}$ as a product of 8 matrices. (10 points)
+    \item Write the final result again as a product of $\mathbf{ABC}$, i.e. write matrix $\mathbf{D} = \mathbf{ABC}$ and find $\mathbf{A},\mathbf{C}$. (5 points)
+    \item Write Python code to verify your answers in parts a, and b. Show the answers and code. (5 points)
+    Let
+    \[
+     \mathbf{B} = \begin{bmatrix}
+        1 & 2 & 3 & 4\\
+        5 & 6 & 7 & 8\\
+        9 & 10 & 11 & 12\\
+        13 & 14 & 15 & 16\\
+    \end{bmatrix}
+    \]
+    Hint: You can use NumPy for matrix operations. 
+\end{enumerate}
+
+\textbf{Solution:}
+
+For code you may use:
+\begin{lstlisting}[language=python]
+## Comment
+import numpy as np
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 3: Matrix properties (20 points)} 
+%%%%%%%%%%%%%%%%%%%%
+
+Prove that if a matrix $\mathbf{A}$ is triangular (upper or lower) then $\mathbf{A}^{-1}$ is also triangular. Further, use the result to show that if $\mathbf{A}$ is both triangular and orthogonal, then it is diagonal. \\
+
+\textbf{Solution:}
+
+%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 4: $p$-norm inequalities (20 points)}
+%%%%%%%%%%%%%%%%%%%%
+
+Let $\mathbf{x}$ be a real $m$-vector, the vector $p$-norms $\lVert \mathbf{x} \rVert_{p}$ are related by various inequalities, often involving the dimension of the vector, i.e. $m$. For each of the following, prove the inequality and give an example of a nonzero vector $\mathbf{x}$ for which \textit{equality} is satisfied. 
+   
+\begin{enumerate}
+    \item $\lVert \mathbf{x} \rVert_\infty \le \lVert \mathbf{x} \rVert_2$. (7 points)
+    \item $\lVert \mathbf{x} \rVert_2 \le \sqrt{m} \cdot \lVert \mathbf{x} \rVert_\infty$. (7 points)
+    \item Plot a 2D contour of $\lVert \mathbf{x} \rVert_\infty = 1$, on the same chart also highlight regions where $\lVert \mathbf{x}\rVert_2  < 1$, $\lVert \mathbf{x}\rVert_2  = 1$ and $\lVert \mathbf{x}\rVert_2  > 1$. (6 points)
+\end{enumerate}
+
+\textbf{Solution:}
+
+%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 5: Basic vector operations (20 points)} 
+%%%%%%%%%%%%%%%%%%%%
+
+Given two 3-dimensional vectors $\mathbf{a}, \mathbf{b}$, and three matrices $A \in \mathbb{R}^{2 \times 3}, B \in \mathbb{R}^{3 \times 2}, C \in \mathbb{R}^{2 \times 3}$, scalars $\beta_1, \beta_2$ with the values below:\\
+
+\begin{gather*}
+    \mathbf{a} = \begin{bmatrix} 1 \\ 3 \\ 5 \end{bmatrix} 
+    \mathbf{b} = \begin{bmatrix} 2 \\ 4 \\ 6 \end{bmatrix} 
+    \mathbf{A} = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \end{bmatrix} 
+    \mathbf{B} = \begin{bmatrix} 7 & 8 \\ 9 & 10 \\ 11 & 12 \end{bmatrix} 
+    \mathbf{C} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix} \\
+    \mathbf{\beta_1} = 4, \mathbf{\beta_2} = 5
+\end{gather*}
+
+
+
+\begin{enumerate}
+\item Compute the following operations by hand and show your work: (15 points)
+\begin{enumerate}
+    \item [(i)] Vector operations:
+    $\mathbf{a} + \mathbf{b}, \quad \beta_1 \mathbf{a}, \quad \mathbf{a} \circ \mathbf{b}, \quad \beta_1 \mathbf{a} + \beta_2 \mathbf{b}$
+    where $\circ$ denotes component-wise multiplication. (3 points)
+    
+    \item [(ii)] Matrix operations: $\beta_1 \mathbf{A}, \quad \mathbf{A} + \mathbf{B}, \quad \mathbf{A} + \mathbf{C}$. (3 points)
+    
+    \item [(iii)] Transpose operations: $(\mathbf{AB})^\top, \quad \mathbf{B}^\top \mathbf{A}^\top, \quad (\mathbf{A}^{\top})^{\top}, \quad (\mathbf{A} + \mathbf{C})^\top$. (3 points)
+    
+    \item [(iv)] Inner products and outer product: $\langle \mathbf{a}, \mathbf{b} \rangle, \quad \langle \mathbf{b}, \mathbf{a} \rangle, \quad \langle \mathbf{a}, \mathbf{a} \rangle, \quad \langle \mathbf{b}, \mathbf{b} \rangle, \quad \beta_1 \langle \mathbf{a}, \mathbf{b} \rangle, \quad \langle \beta_1 \mathbf{a}, \mathbf{b} \rangle, \quad \mathbf{b} \mathbf{a}^\top $. (3 points)
+    
+    \item [(v)] Determinants: $\det(\mathbf{AB}), \quad \det(\mathbf{BC})$. (3 points)
+\end{enumerate}
+
+\item Implement all the parts above using python (any programming language of your choice)  and show the answers and code. (5 points)
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+\textbf{Solution:}
+
+\end{document}

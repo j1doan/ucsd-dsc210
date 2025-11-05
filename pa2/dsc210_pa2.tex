@@ -1,0 +1,194 @@
+% Contributions are much appreciated, in order to contribute to this project, head over to this repository:
+% https://github.com/bshramin/uofa-eng-assignment
+
+\documentclass[11pt,letterpaper]{article}
+\textwidth 6.5in
+\textheight 9.in
+\oddsidemargin 0in
+\headheight 0in
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig,graphicx}
+\usepackage{multicol,pst-plot}
+\usepackage{pstricks}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\pagestyle{empty}
+\DeclareMathOperator{\tr}{Tr}
+\newcommand*{\op}[1]{\check{\mathbf#1}}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\mean}[1]{\langle #1 \rangle}
+\newcommand{\opvec}[1]{\check{\vec #1}}
+\renewcommand{\sp}[1]{$${\begin{split}#1\end{split}}$$}
+
+\usepackage{lipsum}
+
+\usepackage{listings}
+\usepackage{soul}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\pagestyle{plain}
+
+
+% \begin{flushright}\vspace{-5mm}
+% \includegraphics[height=2cm]{logo.png}
+% \end{flushright}
+ 
+\begin{center}
+\textbf{\Large DSC 210 Numerical Linear Algebra, Fall 2025} \\ \bigskip
+\large{Homework Problems for Topic 2: \textit{Systems of Linear Equations}} \\  \bigskip
+\begin{flushleft}
+    \large{Student Name (PID):}
+\end{flushleft}
+\end{center}
+\vspace{-4mm}
+\rule{\linewidth}{0.1mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \bigskip
+\bigskip
+
+\begin{enumerate}
+
+\item[] \fbox{%
+\begin{minipage}{0.95\textwidth}
+Write your solutions to the following problems by typing them in \LaTeX. Unless otherwise noted by the
+problem's instructions, show your work and provide justification for
+your answer. Homework is due via Gradescope at \textbf{6th November 2025, 11:59 PM}.
+\\
+\textbf{Late Policy}: If you submit your homework after the deadline we will apply a late penalty of $10\%$ per day.
+
+\item[] \textbf{Guidelines for Homework Related Questions:}
+\begin{enumerate}
+    \item As a general rule, we can help you understand the homework problems and explain the material from the corresponding lectures, but we cannot give you the entire solution.
+    \item Regarding debugging programming questions: We ask you to do some debugging on your own first, including printing out intermediate values in your algorithms, trying a simpler version of the problem, etc.
+    \item We will not be pre-grading the homework, i.e. we won’t confirm if the answer you have is correct.
+\end{enumerate}
+
+\item[] \textbf{AI Usage Policy:}
+\begin{enumerate}
+    \item Code: You may use LLMs to debug your code; however, you may not use LLMs to generate your entire code, and code must be reviewed and tested.
+    \item Writing: You may use LLMs to correct grammar, style and latex issues; however, you may not use LLMs to generate entire solutions, sentences or paragraphs. All writing must be in your own voice.
+\end{enumerate}
+
+\item [] \textbf{Academic Integrity Policy:}
+\begin{enumerate}
+    \item [] The UC San Diego Academic Integrity Policy (formerly the Policy on Integrity of Scholarship) is effective as of September 25, 2023 and applies to any cases originating on or after September 25, 2023. The university expects both faculty and students to honor the policy. For students, this means that all academic work will be done by the individual to whom it's assigned, without unauthorized aid of any kind. If violations of academic integrity occur, the same Sanctioning Guidelines apply regardless of which policy was effective for that case.
+    
+    For more information on how the policy is implemented, refer to the most current procedures. Remember: When in doubt about what constitutes appropriate collaboration or resource use, please ask TAs before proceeding. It's always better to clarify expectations than to risk an academic integrity violation. Academic integrity violations can have serious consequences for your academic record, and you will get zero grades.
+\end{enumerate}
+
+
+
+You can access the Homework Template using the following link: \url{https://www.overleaf.com/read/vfhcmsppvskp}
+\end{minipage}}
+
+%%%%%%%%%%%%%%%
+\clearpage
+\begin{enumerate}
+%%%%%%%%%%%%%%%
+\item[] \textbf{Question 1: Gauss elimination (20 points)} 
+%%%%%%%%%%%%%%%
+
+Use Gauss elimination to solve the following equations for $\mathbf{x}=\begin{bmatrix}x_1 & x_2 & x_3\end{bmatrix}^\top$:
+\begin{align*}
+2x_1 + 6x_2 +7x_3 &= -11 \\
+-8x_1  +10x_2 + 3x_3 &= - 15 \\
+9x_1 + 10x_2 + x_3 &= 25
+\end{align*}
+
+\item[] \textbf{Solution:}
+
+
+\newpage
+
+%%%%%%%%%%%%%%%
+\item[] \textbf{Question 2: LU decomposition (20 points)} 
+%%%%%%%%%%%%%%%
+
+Perform LU decomposition for the matrix corresponding to the equations in \textbf{Question 1}. Using the matrices $L$ and $U$, do forward and backward substitution to solve for $\mathbf{x}$. Match your solution with that of \textbf{Question 1}.
+
+\item[] \textbf{Solution:}
+
+\newpage
+
+%%%%%%%%%%%%%%%
+\item[] \textbf{Question 3: QR decomposition (20 points)} 
+%%%%%%%%%%%%%%%
+
+Perform QR decomposition for the matrix corresponding to the equations in \textbf{Question 1} using the Gram-Schmidt algorithm. Using the decomposition, solve for $\mathbf{x}$. Match your solution with that of \textbf{Question 1} and \textbf{Question 2}.
+
+\textbf{Solution:}
+
+
+\newpage
+
+%%%%%%%%%%%%%%%
+\item[] \textbf{Question 4: Gram-Schmidt process (20 points)} 
+%%%%%%%%%%%%%%%
+
+Show that the residual vector $\mathbf{a}_i^{\perp}$ is orthogonal to $\mathbf{q}_1, \mathbf{q}_2,\dots, \mathbf{q}_{i-1}$ in the Gram-Schmidt process.
+
+\textbf{Solution:}
+
+\newpage
+
+\item[] \textbf{Question 5: Rank deficient matrices (20 points)}
+
+Compute the QR decomposition of following two matrices using Gram-Schmidt process and properties of the matrix $\mathbf{Q}$.
+\begin{enumerate}
+    \item $\mathbf{A} = \begin{bmatrix}
+-1 & 1 & 1\\
+-1 & -1 & 1\\
+1 & 1 & -1
+\end{bmatrix}$
+\item $\mathbf{B} = \begin{bmatrix}
+-1 & -1 & -1\\
+1 & 1 & 1\\
+-1 & -1 & -1
+\end{bmatrix}$
+\end{enumerate}
+Note: matrices $\mathbf{Q}$ and $\mathbf{R}$ must be square matrices.
+
+\textbf{Solution:}
+
+
+
+\end{enumerate}
+\end{enumerate}
+\end{document}
