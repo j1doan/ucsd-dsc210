@@ -302,6 +302,147 @@ Perform QR decomposition for the matrix corresponding to the equations in \textb
 
 \textbf{Solution:}
 
+\begin{align*}
+	\mathbf{A} = \begin{bmatrix}
+	2 & 6 & 7 \\
+	-8 & 10 & 3 \\
+	9 & 10 & 1
+	\end{bmatrix}
+\end{align*}
+
+Let the three columns of this matrix be denoted as \( a_1, a_2, a_3 \).
+
+Solving for \( q_k \):
+% flalign (flush left align) requires `&\\` not `\\`
+% -----------------------------------------------
+\begin{flalign*}
+	u_1 &= a_1 &\\
+	&= (2, -8, 9)
+\end{flalign*}
+
+\begin{flalign*}
+	q_1 &= \frac{u_1}{\lVert u_1 \rVert} &\\
+	&= \frac{(2, -8, 9)}{\sqrt{2^2 + (-8)^2 + 9^2}} &\\
+	&= \frac{(2, -8, 9)}{\sqrt{149}} &\\
+	&= (\frac{2}{\sqrt{149}}, \frac{-8}{\sqrt{149}}, \frac{9}{\sqrt{149}})
+\end{flalign*}
+
+\begin{flalign*}
+	u_2 &= a_2 - proj_{q_2}(a_1) \cdot a_2 &\\
+	&= a_2 - (a_2 \cdot q_1)(q_1) &\\
+	&= (6, 10, 10) - (6 \cdot \frac{2}{\sqrt{149}} + 10 \cdot \frac{(-8)}{\sqrt{149}} + 10 \cdot \frac{9}{\sqrt{149}})(\frac{(2, -8, 9)}{\sqrt{149}}) &\\
+	&= (6, 10, 10) - (\frac{22}{149})(2, -8, 9) &\\
+	&= (\frac{850}{149}, \frac{1666}{149}, \frac{1292}{149})
+\end{flalign*}
+
+\begin{flalign*}
+	q_2 &= \frac{u_2}{\lVert u_2 \rVert} &\\
+	&= \frac{(\frac{850}{149}, \frac{1666}{149}, \frac{1292}{149})}{\sqrt{}} &\\
+	&= \frac{(\frac{850}{149}, \frac{1666}{149}, \frac{1292}{149})}{\sqrt{(\frac{850}{149})^2 + (\frac{1666}{149})^2 + (\frac{1292}{149})^2}} &\\
+	&= (\frac{25}{\sqrt{4470}}, \frac{49}{\sqrt{4470}}, \frac{38}{\sqrt{4470}})
+\end{flalign*}
+
+\begin{flalign*}
+	u_3 &= a_3 - proj_{q_3}(a_1) \cdot a_1 - proj_{q_3}(a_2) \cdot a_2 &\\
+	&= a_3 - (a_3 \cdot q_1)(q_1) - (a_3 \cdot q_2)(q_2) &\\
+	&= (7, 3, 1) - (7 \cdot \frac{2}{\sqrt{149}} + 3 \cdot \frac{(-8)}{\sqrt{149}} + 1 \cdot \frac{9}{\sqrt{149}})(\frac{(2, -8, 9)}{\sqrt{149}}) - (7 \cdot \frac{25}{\sqrt{4470}} + 3 \cdot \frac{49}{\sqrt{4470}} + 1 \cdot \frac{38}{\sqrt{4470}})(\frac{25, 49, 38}{4470}) &\\
+	&= (7, 3, 1) - (-\frac{1}{149})(2, -8, 9) - (\frac{12}{149})(25, 49, 38) &\\
+	&= (5, -1, -2)
+\end{flalign*}
+
+\begin{flalign*}
+	q_3 &= \frac{u_3}{\lVert u_3 \rVert} &\\
+	&= \frac{(5, -1, -2)}{\sqrt{5^2 + (-1)^2 + (-2)^2}} &\\
+	&= \frac{(5, -1, -2)}{\sqrt{30}} &\\
+	&= (\frac{5}{\sqrt{30}}, \frac{-1}{\sqrt{30}}, \frac{-2}{\sqrt{30}})
+\end{flalign*}
+% -----------------------------------------------
+
+Q and R matricies:
+% -----------------------------------------------
+\begin{flalign*}
+	\mathbf{Q} &= \begin{bmatrix}
+	q_1 & q_2 & q_3
+	\end{bmatrix} &\\
+	&= \begin{bmatrix}
+	\frac{2}{\sqrt{149}} & \frac{25}{\sqrt{4470}} & \frac{5}{\sqrt{30}} &\\
+	\frac{-8}{\sqrt{149}} & \frac{49}{\sqrt{4470}} & \frac{-1}{\sqrt{30}} &\\
+	\frac{9}{\sqrt{149}} & \frac{38}{\sqrt{4470}} & \frac{-2}{\sqrt{30}}
+	\end{bmatrix}
+\end{flalign*}
+
+\begin{flalign*}
+	\mathbf{R} &= \begin{bmatrix}
+	a_1 \cdot q_1 & a_2 \cdot q_1 & a_3 \cdot q_1 \\
+	0 & a_2 \cdot q_2 & a_3 \cdot q_2 \\
+	0 & 0 & a_3 \cdot q_3 \\
+	\end{bmatrix} &\\
+	&= \begin{bmatrix}
+	2(\frac{2}{\sqrt{149}}) + (-8)(\frac{-8}{\sqrt{149}}) + 9(\frac{9}{\sqrt{149}}) & 6(\frac{2}{\sqrt{149}}) + 10(\frac{-8}{\sqrt{149}}) + 10(\frac{9}{\sqrt{149}}) & 7(\frac{2}{\sqrt{149}}) + 3(\frac{-8}{\sqrt{149}}) + 1(\frac{9}{\sqrt{149}}) \\
+	0 & 6(\frac{25}{\sqrt{4470}}) + 10(\frac{49}{\sqrt{4470}}) + 10(\frac{38}{\sqrt{4470}}) & 7(\frac{25}{\sqrt{4470}}) + 3(\frac{49}{\sqrt{4470}}) + 1(\frac{38}{\sqrt{4470}}) \\
+	0 & 0 & 7(\frac{5}{\sqrt{30}}) + 3(\frac{-1}{\sqrt{30}}) + 1(\frac{-2}{\sqrt{30}})
+	\end{bmatrix} &\\
+	&= \begin{bmatrix}
+	\sqrt{149} & \frac{22}{\sqrt{149}} & -\frac{1}{\sqrt{149}} \\
+	0 & \frac{1020}{\sqrt{4470}} & \frac{360}{\sqrt{4470}} \\
+	0 & 0 & \sqrt{30}
+	\end{bmatrix}
+\end{flalign*}
+% -----------------------------------------------
+
+To solve for x, first let \( A = QR \).
+\begin{align*}
+	\therefore QRx &= b \\
+	\therefore Rx &= Q^\top b \\
+	\therefore y &= Q^\top b
+\end{align*}
+
+Solving for the second equation above gives:
+
+\begin{align*}
+	Rx &= Q^\top b \\
+	\begin{bmatrix}
+	\sqrt{149} & \frac{22}{\sqrt{149}} & -\frac{1}{\sqrt{149}} \\
+	0 & \frac{1020}{\sqrt{4470}} & \frac{360}{\sqrt{4470}} \\
+	0 & 0 & \sqrt{30}
+	\end{bmatrix}
+	\begin{bmatrix}
+	x_1 \\
+	x_2 \\
+	x_3
+	\end{bmatrix}
+	&= \begin{bmatrix}
+	\frac{2}{\sqrt{149}} & \frac{-8}{\sqrt{149}} & \frac{9}{\sqrt{149}} \\
+	\frac{25}{\sqrt{4470}} & \frac{49}{\sqrt{4470}} & \frac{38}{\sqrt{4470}} \\
+	\frac{5}{\sqrt{30}} & \frac{-1}{\sqrt{30}} & \frac{-2}{\sqrt{30}}
+	\end{bmatrix}
+	\begin{bmatrix} -11 \\ -15 \\ 25 \end{bmatrix} \\
+	\begin{bmatrix}
+	\sqrt{149} & \frac{22}{\sqrt{149}} & -\frac{1}{\sqrt{149}} \\
+	0 & \frac{1020}{\sqrt{4470}} & \frac{360}{\sqrt{4470}} \\
+	0 & 0 & \sqrt{30}
+	\end{bmatrix}
+	\begin{bmatrix}
+	x_1 \\
+	x_2 \\
+	x_3
+	\end{bmatrix}
+	&= \begin{bmatrix}
+	\frac{323}{\sqrt{149}} \\ 
+	\frac{-60}{\sqrt{4470}} \\ 
+	\frac{-90}{\sqrt{30}}
+	\end{bmatrix}
+\end{align*}
+
+Continuing with backward substitution:
+
+If \( \sqrt{30}x_3 = \frac{-90}{\sqrt{30}} \) then \(x_3 = -3 \)
+
+\( \therefore 0x_1\frac{1020}{\sqrt{4470}}x_2 + \frac{360}{\sqrt{4470}}(-3) = \frac{-60}{\sqrt{4470}} \Rightarrow x_2 = 1 \)
+
+\( \therefore \sqrt{149}x_1 + \frac{22}{\sqrt(149)}(1) - \frac{1}{\sqrt{149}}(-3) = \frac{323}{\sqrt{149}} \Rightarrow x_1 = 2 \)
+
+\( \therefore \mathbf{x}=\begin{bmatrix}x_1 & x_2 & x_3\end{bmatrix}^\top=\begin{bmatrix}2 \\ 1 \\ -3\end{bmatrix} \hfill \square \)
 
 \newpage
 
@@ -382,7 +523,183 @@ Note: matrices $\mathbf{Q}$ and $\mathbf{R}$ must be square matrices.
 
 \textbf{Solution:}
 
+% -----------------------------------------------
+\begin{align*}
+	\mathbf{A} = \begin{bmatrix}
+	-1 & 1 & 1\\
+	-1 & -1 & 1\\
+	1 & 1 & -1
+	\end{bmatrix}
+\end{align*}
 
+Let the three columns of this matrix be denoted as \( a_1, a_2, a_3 \). Note: Rank(A) = 2; column 3 linearly dependent on column 1.
+
+\begin{flalign*}
+	u_1 &= a_1 &\\
+	&= (-1, -1, 1)
+\end{flalign*}
+
+\begin{flalign*}
+	q_1 &= \frac{u_1}{\lVert u_1 \rVert} &\\
+	&= \frac{(-1, -1, 1)}{\sqrt{(-1)^2 + (-1)^2 + (1)^2}} &\\
+	&= \frac{(-1, -1, 1)}{\sqrt{3}} &\\
+	&= (\frac{-1}{\sqrt{3}}, \frac{-1}{\sqrt{3}}, \frac{1}{\sqrt{3}})
+\end{flalign*}
+
+\begin{flalign*}
+	u_2 &= a_2 - proj_{q_2}(a_1) \cdot a_2 &\\
+	&= a_2 - (a_2 \cdot q_1)(q_1) &\\
+	&= (1, -1, 1) - (1 \cdot \frac{-1}{\sqrt{3}} + -1 \cdot \frac{(-1)}{\sqrt{1439}} + 1 \cdot \frac{1}{\sqrt{3}})(\frac{(1, -1, 1)}{\sqrt{149}}) &\\
+	&= (1, -1, 1) - (\frac{1}{3})(-1, -1, 1) &\\
+	&= (\frac{4}{3}, \frac{-2}{3}, \frac{2}{3})
+\end{flalign*}
+
+\begin{flalign*}
+	q_2 &= \frac{u_2}{\lVert u_2 \rVert} &\\
+	&= \frac{(\frac{4}{3}, \frac{-2}{3}, \frac{2}{3})}{\sqrt{(\frac{4}{3})^2 + (\frac{-2}{3})^2 + (\frac{2}{3})^2}} &\\
+	&= \frac{(\frac{4}{3}, \frac{-2}{3}, \frac{2}{3})}{\sqrt{(4)^2 + (-2)^2 + (2)^2}} &\\
+	&= (\frac{2}{\sqrt{6}}, \frac{-1}{\sqrt{6}}, \frac{1}{\sqrt{6}})
+\end{flalign*}
+
+Due to the rank deficiency of A, \( q_3 \) must be orthogonal to \( q_1, q_2 \) which can be done with the cross product. It must also normalized like \( q_1, q_2 \).
+
+\begin{flalign*} % take advantage of rank deficiency
+	q_3 &= \frac{q_1 \times q_2}{\lVert q_1 \times q_2 \rVert} &\\
+	&= \frac{\begin{vmatrix}
+	i & j & k \\
+	\frac{-1}{\sqrt{3}} & \frac{-1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+	\frac{2}{\sqrt{6}} & \frac{-1}{\sqrt{6}} & \frac{1}{\sqrt{6}}
+	\end{vmatrix}}{\lVert q_1 \times q_2 \rVert} &\\
+	&= \frac{i(\frac{-1}{\sqrt{3}} \cdot \frac{1}{\sqrt{6}} - \frac{1}{\sqrt{3}} \cdot \frac{1}{\sqrt{6}}) - j(\frac{-1}{\sqrt{3}} \cdot \frac{1}{\sqrt{6}} - \frac{1}{\sqrt{3}} \cdot \frac{2}{\sqrt{6}}) + k(\frac{-1}{\sqrt{3}} \cdot \frac{-1}{\sqrt{6}} - \frac{-1}{\sqrt{3}} \cdot \frac{2}{\sqrt{6}})}{\lVert q_1 \times q_2 \rVert} &\\
+	&= \frac{(0, \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})}{{\lVert q_1 \times q_2 \rVert}} &\\
+	&= \frac{(0, \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})}{{\sqrt{0^2 + (\frac{1}{\sqrt{2}})^2 + (\frac{1}{\sqrt{2}})^2}}} &\\
+	&= (0, \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})
+\end{flalign*}
+
+Therefore,
+
+\begin{flalign*}
+	\mathbf{Q} &= \begin{bmatrix}
+		q_1 & q_2 & q_3
+	\end{bmatrix} \\
+	& = \begin{bmatrix}
+	\frac{-1}{\sqrt{3}} & \frac{2}{\sqrt{6}} & 0 \\
+	\frac{-1}{\sqrt{3}} & \frac{-1}{\sqrt{6}} & \frac{1}{\sqrt{2}} \\
+	\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}}
+	\end{bmatrix}
+\end{flalign*}
+
+\begin{flalign*}
+	% rank(A) = 2, so 2 rows
+	\mathbf{R} &= \begin{bmatrix}
+	a_1 \cdot q_1 & a_2 \cdot q_1 & a_3 \cdot q_1 \\
+	0 & a_2 \cdot q_2 & a_3 \cdot q_2 \\
+	0 & 0 & a_3 \cdot q_3 \\
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+	(-1)(\frac{-1}{\sqrt{3}}) + (-1)(\frac{-1}{\sqrt{3}}) + 1(\frac{1}{\sqrt{3}}) & 1(\frac{-1}{\sqrt{3}}) + (-1)(\frac{-1}{\sqrt{3}}) + 1(\frac{1}{\sqrt{3}}) & 1(\frac{-1}{\sqrt{3}}) + 1(\frac{-1}{\sqrt{3}}) + (-1)(\frac{1}{\sqrt{3}}) \\
+	0 & 1(\frac{2}{\sqrt{6}}) + (-1)(\frac{-1}{\sqrt{6}}) + 1(\frac{1}{\sqrt{6}}) & 1(\frac{2}{\sqrt{6}}) + 1(\frac{-1}{\sqrt{6}}) + (-1)(\frac{1}{\sqrt{6}}) \\
+	0 & 0 & 1(0) + 1(\frac{1}{\sqrt{2}}) + (-1)(\frac{1}{\sqrt{2}})
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+	\sqrt{3} & \frac{1}{\sqrt{3}} & \frac{-3}{\sqrt{3}} \\
+	0 & \frac{4}{\sqrt{6}} & 0 \\
+	0 & 0 & 0
+	\end{bmatrix} \\
+\end{flalign*}
+
+% -----------------------------------------------
+\begin{align*}
+	\mathbf{B} = \begin{bmatrix}
+	-1 & -1 & -1\\
+	1 & 1 & 1\\
+	-1 & -1 & -1
+	\end{bmatrix}
+\end{align*}
+
+Let the three columns of this matrix be denoted as \( a_1, a_2, a_3 \). Note: Rank(B) = 1; column 2 and column 3 linearly dependent on column 1.
+
+\begin{flalign*}
+	u_1 &= a_1 &\\
+	&= (-1, 1, -1)
+\end{flalign*}
+
+\begin{flalign*}
+	q_1 &= \frac{u_1}{\lVert u_1 \rVert} &\\
+	&= \frac{(-1, 1, -1)}{\sqrt{(-1)^2 + (1)^2 + (-1)^2}} &\\
+	&= \frac{(-1, 1, -1)}{\sqrt{3}} &\\
+	&= (\frac{-1}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{-1}{\sqrt{3}})
+\end{flalign*}
+
+Since Rank(B) = 1, \( q_2 \) must be orthogonal to \( q_1 \).  Therefore, let \( a_2 \) be arbitrarily defined:
+
+\begin{flalign*}
+	a_2 = (1, 0, 0)
+\end{flalign*}
+
+\begin{flalign*}
+	u_2 &= a_2 - proj_{q_2}(a_1) \cdot a_2 &\\
+	&= a_2 - (a_2 \cdot q_1)(q_1) &\\
+	&= (1, 0, 0) - (1 \cdot \frac{-1}{\sqrt{3}} + 0 \cdot \frac{(1)}{\sqrt{3}} + 0 \cdot \frac{-1}{\sqrt{3}})(\frac{(-1, 1, -1)}{\sqrt{3}}) &\\
+	&= (1, 0, 0) - (\frac{-1}{3})(-1, 1, -1) &\\
+	&= (\frac{2}{3}, \frac{1}{3}, \frac{-1}{3})
+\end{flalign*}
+
+\begin{flalign*}
+	q_2 &= \frac{u_2}{\lVert u_2 \rVert} &\\
+	&= \frac{(\frac{2}{3}, \frac{1}{3}, \frac{-1}{3})}{\sqrt{(\frac{2}{3})^2 + (\frac{1}{3})^2 + (\frac{-1}{3})^2}} &\\
+	&= \frac{(\frac{2}{3}, \frac{1}{3}, \frac{-1}{3})}{\sqrt{6}} &\\
+	&= (\frac{2}{\sqrt{6}}, \frac{1}{\sqrt{6}}, \frac{-1}{\sqrt{6}})
+\end{flalign*}
+
+Due to the rank deficiency of B, \( q_3 \) must be orthogonal to \( q_1, q_2 \) which can be done with the cross product. It must also normalized like \( q_1, q_2 \).
+
+\begin{flalign*} % take advantage of rank deficiency
+	q_3 &= \frac{q_1 \times q_2}{\lVert q_1 \times q_2 \rVert} &\\
+	&= \frac{\begin{vmatrix}
+	i & j & k \\
+	\frac{-1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{-1}{\sqrt{3}} \\
+	\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{-1}{\sqrt{6}}
+	\end{vmatrix}}{\lVert q_1 \times q_2 \rVert} &\\
+	&= \frac{i(\frac{1}{\sqrt{3}} \cdot \frac{-1}{\sqrt{6}} - \frac{-1}{sqrt{3}} \cdot \frac{1}{\sqrt{6}}) - j(\frac{-1}{\sqrt{3}} \cdot \frac{-1}{\sqrt{6}} - \frac{-1}{\sqrt{3}} \cdot \frac{2}{\sqrt{6}}) + k(\frac{-1}{\sqrt{3}} \cdot \frac{1}{\sqrt{6}} - \frac{1}{\sqrt{3}} \cdot \frac{2}{\sqrt{6}})}{\lVert q_1 \times q_2 \rVert} &\\
+	&= \frac{(0, \frac{-1}{\sqrt{2}}, \frac{-1}{\sqrt{2}})}{{\lVert q_1 \times q_2 \rVert}} &\\
+	&= \frac{(0, \frac{-1}{\sqrt{2}}, \frac{-1}{\sqrt{2}})}{{\sqrt{0^2 + (\frac{-1}{\sqrt{2}})^2 + (\frac{-1}{\sqrt{2}})^2}}} &\\
+	&= (0, \frac{-1}{\sqrt{2}}, \frac{-1}{\sqrt{2}})
+\end{flalign*}
+
+Therefore,
+
+\begin{flalign*}
+	\mathbf{Q} &= \begin{bmatrix}
+		q_1 & q_2 & q_3
+	\end{bmatrix} \\
+	& = \begin{bmatrix}
+	\frac{-1}{\sqrt{3}} & \frac{2}{\sqrt{6}} & 0 \\
+	\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{6}} & \frac{-1}{\sqrt{2}} \\
+	\frac{-1}{\sqrt{3}} & \frac{-1}{\sqrt{6}} & \frac{-1}{\sqrt{2}}
+	\end{bmatrix}
+\end{flalign*}
+
+\begin{flalign*}
+	% rank(B) = 1, so 1 row
+	\mathbf{R} &= \begin{bmatrix}
+	a_1 \cdot q_1 & a_2 \cdot q_1 & a_3 \cdot q_1 \\
+	0 & a_2 \cdot q_2 & a_3 \cdot q_2 \\
+	0 & 0 & a_3 \cdot q_3 \\
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+	(-1)(\frac{-1}{\sqrt{3}}) + 1(\frac{1}{\sqrt{3}}) + (-1)(\frac{-1}{\sqrt{3}}) & (-1)(\frac{-1}{\sqrt{3}}) + 1(\frac{1}{\sqrt{3}}) + (-1)(\frac{-1}{\sqrt{3}}) & (-1)(\frac{-1}{\sqrt{3}}) + 1(\frac{1}{\sqrt{3}}) + (-1)(\frac{-1}{\sqrt{3}}) \\
+	0 & (-1)(\frac{2}{\sqrt{6}}) + 1(\frac{1}{\sqrt{6}}) + (-1)(\frac{-1}{\sqrt{6}}) & (-1)(\frac{2}{\sqrt{6}}) + 1(\frac{1}{\sqrt{6}}) + (-1)(\frac{-1}{\sqrt{6}}) \\
+	0 & 0 & (-1)(0) + 1(\frac{-1}{\sqrt{2}}) + (-1)(\frac{-1}{\sqrt{2}})
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+	\sqrt{3} & \sqrt{3} & \sqrt{3} \\
+	0 & 0 & 0 \\
+	0 & 0 & 0
+	\end{bmatrix} \\
+\end{flalign*}
+
+% -----------------------------------------------
 
 \end{enumerate}
 \end{enumerate}
