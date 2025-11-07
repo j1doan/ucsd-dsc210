@@ -328,7 +328,7 @@ Solving for \( q_k \):
 \end{flalign*}
 
 \begin{flalign*}
-	u_2 &= a_2 - proj_{q_2}(a_1) \cdot a_2 &\\
+	u_2 &= a_2 - proj_{q_1}(a_2) \cdot a_2 &\\
 	&= a_2 - (a_2 \cdot q_1)(q_1) &\\
 	&= (6, 10, 10) - (6 \cdot \frac{2}{\sqrt{149}} + 10 \cdot \frac{(-8)}{\sqrt{149}} + 10 \cdot \frac{9}{\sqrt{149}})(\frac{(2, -8, 9)}{\sqrt{149}}) &\\
 	&= (6, 10, 10) - (\frac{22}{149})(2, -8, 9) &\\
@@ -338,11 +338,14 @@ Solving for \( q_k \):
 \begin{flalign*}
 	q_2 &= \frac{u_2}{\lVert u_2 \rVert} &\\
 	&= \frac{(\frac{850}{149}, \frac{1666}{149}, \frac{1292}{149})}{\sqrt{(\frac{850}{149})^2 + (\frac{1666}{149})^2 + (\frac{1292}{149})^2}} &\\
+	&= \frac{34(25, 49, 38)}{\sqrt{5,167,320}} &\\
+	&= \frac{(25, 49, 38)}{\frac{\sqrt{5,167,320}}{34}} &\\
+	&= \frac{(25, 49, 38)}{\sqrt{4470}} &\\
 	&= (\frac{25}{\sqrt{4470}}, \frac{49}{\sqrt{4470}}, \frac{38}{\sqrt{4470}})
 \end{flalign*}
 
 \begin{flalign*}
-	u_3 &= a_3 - proj_{q_3}(a_1) \cdot a_1 - proj_{q_3}(a_2) \cdot a_2 &\\
+	u_3 &= a_3 - proj_{q_1}(a_3) \cdot a_1 - proj_{q_2}(a_3) \cdot a_2 &\\
 	&= a_3 - (a_3 \cdot q_1)(q_1) - (a_3 \cdot q_2)(q_2) &\\
 	&= (7, 3, 1) - (7 \cdot \frac{2}{\sqrt{149}} + 3 \cdot \frac{(-8)}{\sqrt{149}} + 1 \cdot \frac{9}{\sqrt{149}})(\frac{(2, -8, 9)}{\sqrt{149}}) - (7 \cdot \frac{25}{\sqrt{4470}} + 3 \cdot \frac{49}{\sqrt{4470}} + 1 \cdot \frac{38}{\sqrt{4470}})(\frac{25, 49, 38}{4470}) &\\
 	&= (7, 3, 1) - (-\frac{1}{149})(2, -8, 9) - (\frac{12}{149})(25, 49, 38) &\\
