@@ -475,7 +475,7 @@ By definition of orthogonality, \( a \cdot b = 0 \),  To prove this, we can repl
 \end{align*}
 
 \begin{align*}
-	\mathbf{q}_k \cdot \mathbf{a}_i - \sum_{k=1}^{i-1} \text{proj}_{q_k}(\mathbf{a}_i)
+	\mathbf{q}_k \cdot \mathbf{a}_i^{\perp} = \mathbf{q}_k \cdot \left( \mathbf{a}_i - \sum_{j=1}^{i-1} \text{proj}_{q_j}(\mathbf{a}_i) \right)
 \end{align*}
 
 By substituting in the definition of the projection into this equation, it is shown that
@@ -490,10 +490,10 @@ Rearranging gives:
 	\mathbf{a}_i - \sum_{j=1}^{i-1} \frac{\mathbf{q}_j \cdot \mathbf{a}_i}{\mathbf{q}_j \cdot \mathbf{q}_j} \mathbf{q}_j \cdot \mathbf{q}_k
 \end{align*}
 
-Now, since orthogonality means the dot product of \( \mathbf{q}_j \) and \( \mathbf{q}_k \) must be equal to 0 \( \forall \mathbf{j} \). This implies that:
+Now, since orthogonality means the dot product of \( \mathbf{q}_j \) and \( \mathbf{q}_k \) is 0 \( \forall \mathbf{j} \mathbf{k} \). This implies that:
 
 \begin{align*}
-	\mathbf{q}_j = \mathbf{q}_k \forall \text{j, k}
+	\mathbf{q}_k \cdot \mathbf{q}_k = \lVert \mathbf{q}_k \rVert ^2 \text{for} \text{j} \neq \text{k}
 \end{align*}
 
 Therefore,
@@ -502,7 +502,7 @@ Therefore,
 	\mathbf{q}_k \cdot \mathbf{a}_i^{\perp} = \mathbf{a}_i - \sum_{k=1}^{i-1} \frac{\mathbf{q}_k \cdot \mathbf{a}_i}{\mathbf{q}_k \cdot \mathbf{q}_k} \mathbf{q}_k \cdot \mathbf{q}_k
 \end{align*}
 
-This is true for all values of j, now denoted as j such that \( j = k = 1, 2, \dots, i-1 \), therefore the residual vector \( \mathbf{a}_i^{\perp} \) is orthogonal to \( \mathbf{q}_1, \mathbf{q}_2,\dots, \mathbf{q}_{i-1} \hfill \square\).
+This is true for all values of j, now denoted as j such that \( j = k = 1, 2, \dots, i-1 \), therefore the residual vector \( \mathbf{a}_i^{\perp} \) is orthogonal to \( \mathbf{q}_1, \mathbf{q}_2,\dots, \mathbf{q}_{i-1} \). \( \hfill \square \)
 
 \newpage
 
