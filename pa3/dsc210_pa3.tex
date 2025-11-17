@@ -1,0 +1,312 @@
+% Contributions are much appreciated, in order to contribute to this project, head over to this repository:
+% https://github.com/bshramin/uofa-eng-assignment
+
+\documentclass[11pt,letterpaper]{article}
+\textwidth 6.5in
+\textheight 9.in
+\oddsidemargin 0in
+\headheight 0in
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig,graphicx}
+\usepackage{multicol,pst-plot}
+\usepackage{pstricks}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\pagestyle{empty}
+\DeclareMathOperator{\tr}{Tr}
+\newcommand*{\op}[1]{\check{\mathbf#1}}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\mean}[1]{\langle #1 \rangle}
+\newcommand{\opvec}[1]{\check{\vec #1}}
+\renewcommand{\sp}[1]{$${\begin{split}#1\end{split}}$$}
+
+\usepackage{lipsum}
+
+\usepackage{listings}
+\usepackage{soul}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\pagestyle{plain}
+
+
+% \begin{flushright}\vspace{-5mm}
+% \includegraphics[height=2cm]{logo.png}
+% \end{flushright}
+ 
+\begin{center}
+\textbf{\Large DSC 210 Numerical Linear Algebra, Fall 2025} \\ \bigskip
+\large{Homework Problems for Topic 3: \textit{Eigenvalue Problems}} \\  \bigskip
+\begin{flushleft}
+    \large{Student Name (PID):}
+\end{flushleft}
+\end{center}
+\vspace{-4mm}
+\rule{\linewidth}{0.1mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \bigskip
+\bigskip
+
+\begin{enumerate}
+
+\item[] \fbox{%
+\begin{minipage}{0.95\textwidth}
+Write your solutions to the following problems by typing them in \LaTeX. Unless otherwise noted by the
+problem's instructions, show your work and provide justification for
+your answer. Homework is due via Gradescope at \textbf{25th November 2025, 11:59 PM}.
+\\
+\textbf{Late Policy}: If you submit your homework after the deadline we will apply a late penalty of $10\%$ per day.
+
+\item[] \textbf{Guidelines for Homework Related Questions:}
+\begin{enumerate}
+    \item As a general rule, we can help you understand the homework problems and explain the material from the corresponding lectures, but we cannot give you the entire solution.
+    \item Regarding debugging programming questions: We ask you to do some debugging on your own first, including printing out intermediate values in your algorithms, trying a simpler version of the problem, etc.
+    \item We will not be pre-grading the homework, i.e. we won’t confirm if the answer you have is correct.
+\end{enumerate}
+
+\item[] \textbf{AI Usage Policy:}
+\begin{enumerate}
+    \item Code: You may use LLMs to debug your code; however, you may not use LLMs to generate your entire code, and code must be reviewed and tested.
+    \item Writing: You may use LLMs to correct grammar, style and latex issues; however, you may not use LLMs to generate entire solutions, sentences or paragraphs. All writing must be in your own voice.
+\end{enumerate}
+
+\item [] \textbf{Academic Integrity Policy:}
+\begin{enumerate}
+    \item [] The UC San Diego Academic Integrity Policy (formerly the Policy on Integrity of Scholarship) is effective as of September 25, 2023 and applies to any cases originating on or after September 25, 2023. The university expects both faculty and students to honor the policy. For students, this means that all academic work will be done by the individual to whom it's assigned, without unauthorized aid of any kind. If violations of academic integrity occur, the same Sanctioning Guidelines apply regardless of which policy was effective for that case.
+    
+    For more information on how the policy is implemented, refer to the most current procedures. Remember: When in doubt about what constitutes appropriate collaboration or resource use, please ask TAs before proceeding. It's always better to clarify expectations than to risk an academic integrity violation. Academic integrity violations can have serious consequences for your academic record, and you will get zero grades.
+\end{enumerate}
+
+
+
+You can access the Homework Template using the following link: \url{https://www.overleaf.com/read/vfhcmsppvskp}
+
+\end{minipage}}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%
+\clearpage
+\begin{enumerate}
+%%%%%%%%%%%%%%%
+
+\item[] \textbf{Question 1: Singular value decomposition (25 points)}
+\\
+Determine the SVD of the following matrices by hand calculation. Make sure to explicitly list $\Sigma, \textrm{U}$, and \textrm{V} in your answer.
+\begin{enumerate}[label=(\alph*)]
+    \item $\begin{bmatrix}
+    5 & 0 \\ 0 & 2
+    \end{bmatrix}$  (4 points)
+    \item $\begin{bmatrix}
+    2 & 0 \\ 0 & 5
+    \end{bmatrix}$  (4 points)
+    \item $\begin{bmatrix}
+    0 & 3 \\ 0 & 0 \\ 0 & 0
+    \end{bmatrix}$  (4 points)
+    \item $\begin{bmatrix}
+    1 & 0 \\ 1 & 0
+    \end{bmatrix}$  (4 points)
+    \item $\begin{bmatrix}
+    2 & 2 \\ 3 & 2
+    \end{bmatrix}$  (4 points)
+    \item Write Python code to compute SVD of the matrices in parts (a) to (e) and verify that the above results match what you got from code.  (5 points)\\
+    \textbf{Hint}: You can use the numpy library function.\\
+\end{enumerate}
+
+% \vspace{0.3cm}
+\textbf{Solution:}
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+matrix_a = [[5, 0], [0, 2]]
+matrix_b = [[2, 0], [0, 5]]
+matrix_c = [[0, 3], [0, 0], [0, 0]]
+matrix_d = [[1, 0], [1, 0]]
+matrix_e = [[2, 2], [3, 2]]
+
+svd_a = np.linalg.svd(matrix_a)
+print(f'svd_a: {svd_a}')
+
+svd_b = np.linalg.svd(matrix_b)
+print(f'svd_b: {svd_b}')
+
+svd_c = np.linalg.svd(matrix_c)
+print(f'svd_c: {svd_c}')
+
+svd_d = np.linalg.svd(matrix_d)
+print(f'svd_d: {svd_d}')
+
+svd_e = np.linalg.svd(matrix_e)
+print(f'svd_e: {svd_e}')
+\end{lstlisting}
+
+\begin{lstlisting}
+svd_a: SVDResult(U=array([[1., 0.],
+       [0., 1.]]), S=array([5., 2.]), Vh=array([[1., 0.],
+       [0., 1.]]))
+
+svd_b: SVDResult(U=array([[0., 1.],
+       [1., 0.]]), S=array([5., 2.]), Vh=array([[0., 1.],
+       [1., 0.]]))
+
+svd_c: SVDResult(U=array([[1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.]]), S=array([3., 0.]), Vh=array([[ 0.,  1.],
+       [-1.,  0.]]))
+
+svd_d: SVDResult(U=array([[-0.70710678, -0.70710678],
+       [-0.70710678,  0.70710678]]), S=array([1.41421356, 0.        ]), Vh=array([[-1., -0.],
+       [ 0.,  1.]]))
+
+svd_e: SVDResult(U=array([[-0.61541221, -0.78820544],
+       [-0.78820544,  0.61541221]]), S=array([4.56155281, 0.43844719]), Vh=array([[-0.78820544, -0.61541221],
+       [ 0.61541221, -0.78820544]]))
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 2: Eigenvalues and Eigenvectors (25 points)}
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{equation*}
+    \mathbf{A} 
+    = \begin{bmatrix}
+        -5   & 3\\
+        -6   & 6
+    \end{bmatrix}
+\end{equation*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Write down the characteristic equation for matrix $\mathbf{A}$. Use the characteristic equation to solve the eigenvalues and normalized eigenvectors of matrix $\mathbf{A}$. (10 points)
+    \item Write python code to verify your answers for the eigenvalues and normalized eigenvectors from Part (a). \textbf{Hint}: You can use numpy to solve this problem. (5 points)
+    
+    \item Prove that if a real matrix $\mathbf{A} \in \mathbb{R}^{n \times n}$ has unique eigenvalues, then the eigenvectors $\mathbf{x}_i$ are linearly independent. \textbf{Hint:} Prove by contradiction, start with $n=2$ case. (10 points)\\
+\end{enumerate}
+
+% \vspace{0.3cm}
+\textbf{Solution:}
+
+%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 3: Power method (20 points)} \\
+%%%%%%%%%%%%%%%%%%%%
+
+Solve the problem in the \href{https://drive.google.com/file/d/1cOb-zLjKqcIPwESdG55NyQ26GIms09Z2/view?usp=drive_link}{google colab}. Please make a copy of the notebook and solve it there.
+
+\begin{enumerate}[label=(\alph*)]
+\item Power Method:
+Write function \texttt{power\_method(A,x)}, which takes as input matrix $A$ and a vector $\mathbf{x}$, and uses the power method to calculate eigenvalues and eigenvectors.
+
+Get the largest \textbf{(in absolute value)} eigenvalue and the corresponding eigenvector for matrix A using the above function.
+$$A=\begin{bmatrix}
+2 & 2 & 1 \\
+1 & 3 & 2 \\
+2 & 4 & 1
+\end{bmatrix} $$
+
+Start with initial eigenvector guesses: $[-1, 0.5, 3]$ and $[2,-6,0.2]$. For each of the vectors, iterate until convergence.
+\begin{enumerate}[label=\roman*.]
+    \item Plot how the eigenvalue changes with respect to iterations.
+    \item Report the number of steps it took to converge, for both the eigenvalue and eigenvector.
+    \item Report the final eigenvalue and eigenvector. Match your output with the results generated by the numpy API: \texttt{numpy.linalg.eig}.\\
+\end{enumerate}
+
+\emph{Note}: You only need to look at magnitudes of eigenvalues. Use an absolute tolerance of  $10^{-6}$  between eigenvalue output of previous and current iteration as stopping criteria. You may also need to normalize the final eigenvector to match with output of numpy API \texttt{numpy.linalg.eig}. (10 points) \\
+
+\item Inverse Power Method:
+
+Write a function \texttt{inverse\_power\_method(A,x)}, which takes as input matrix $\mathbf{A}$ and a vector $\mathbf{x}$, and uses inverse power method to calculate the smallest (in absolute value) eigenvalue and corresponding eigenvector. Solve for the smallest (in absolute value) eigenvalue and corresponding eigenvector for the matrix from (a). Use the same initial eigenvector guesses as (a). 
+\begin{enumerate}[label=\roman*.]
+    \item Plot the computed/estimated eigenvalue with respect to iterations. 
+    \item Report how many iterations do you need for it to converge to the smallest eigenvalue.
+    \item  Report the final eigenvalue and eigenvector you get. Match your answer with the results generated by the numpy API \texttt{numpy.linalg.eig}.\\
+\end{enumerate}
+
+\emph{Note}: You only need to look at magnitudes of eigenvalues. Use an absolute tolerance of $10^{-6}$ between eigenvalue output of previous and current iteration as stopping criteria. You may also need to normalize the final eigenvector to match with output of numpy API \texttt{numpy.linalg.eig}. (10 points)\\
+
+\end{enumerate}
+% \vspace{0.3cm}
+\textbf{Solution:}
+
+%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 4: Face Recognition with Eigenfaces (30 points + 10 Bonus Points)} \\ 
+%%%%%%%%%%%%%%%%%%%%
+
+Solve the problem in the \href{https://drive.google.com/file/d/1cOb-zLjKqcIPwESdG55NyQ26GIms09Z2/view?usp=drive_link}{google colab}. Please make a copy of the notebook and solve it there.
+
+\textbf{Goal}: Perform face recognition on the \emph{Labeled Faces in the Wild} dataset using PyTorch.
+
+\textbf{Dataset Information}: \href{http://vis-www.cs.umass.edu/lfw/}{Labeled Faces in the Wild} dataset consists of face photographs designed for studying the problem of unconstrained face recognition. The original dataset contains more than 13,000 images of faces collected from the web.
+
+\textbf{Tasks}:
+\begin{itemize}
+    \item First, perform Principal Component Analysis (PCA) on the image dataset.
+    \item Using PCA, extract the Top $k$ principal components (eigenvalues).
+    \item Reconstruction of faces from these \textbf{eigenvalues} will give us the \textbf{eigen-faces} which are the most representative features of most of the images in the dataset.
+    \item \textbf{BONUS}: Finally, train a simple PyTorch Neural Network model on the modified image dataset. This trained model will be used for prediction and evaluation on a test set.
+\end{itemize}
+
+Problem Description
+\begin{enumerate}[label=(\alph*)]
+\item Preprocessing: Using the \texttt{train\_test\_split} API from  \texttt{sklearn}, split the data into train and test dataset in the ratio 3:1. Use  \texttt{random\_state=42}.
+
+For better performance, normalize the features which can have different ranges with huge values. (As all our features here are in the range [0, 255],  it is not explicitly needed here. However, it is a good exercise.)
+
+Use the  \texttt{StandardScaler} class from  \texttt{sklearn} and use that to normalize  \texttt{X\_train} and  \texttt{X\_test}. Validate and show your result by printing the first 5 features of 5 images of  \texttt{X\_train} (This result can vary from PC to PC). (10 points)
+
+\item Dimensionality reduction: 
+Use the PCA API from \texttt{sklearn} to extract the top 100 principal components of the image matrix and fit it on the training dataset.
+
+Visualize some of the top few components as an image (eigenfaces). (10 points)
+
+\item Face reconstruction: 
+Reconstruct an image from its point projected on the principal component basis. Project the first three faces on the eigenvector basis using PCA models trained with varying number of principal components. Using the projected points, reconstruct the faces, and visualize  the images.
+
+Your final output should be a $(3\times 5)$ image matrix, where the rows are the data points, and the columns correspond to original image and reconstructed image for $\text{n\_components} =[10,100,150,500]$. (10 points)
+
+\item Prediction \textbf{(BONUS)}: Train a neural network classifier in \textbf{PyTorch} on the transformed dataset. 
+Note: For PyTorch reference see \href{https://pytorch.org/docs/stable/index.html}{documentation} (10 points) \\
+\end{enumerate}
+\textbf{Solution:}
+\end{enumerate}
+
+% \end{enumerate}
+
+\end{document}
