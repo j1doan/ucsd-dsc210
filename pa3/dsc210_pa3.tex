@@ -151,6 +151,954 @@ Determine the SVD of the following matrices by hand calculation. Make sure to ex
 % \vspace{0.3cm}
 \textbf{Solution:}
 
+\noindent\dotfill Exercise 1A \noindent\dotfill
+
+% calculate AA^T, eigenvalues, singular values
+\begin{align*}
+    \mathbf{A} 
+    = \begin{bmatrix}
+        5 & 0 \\
+        0 & 2
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A^\top} 
+    = \begin{bmatrix}
+        5 & 0 \\
+        0 & 2
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A A^\top} 
+    = \begin{bmatrix}
+        25 & 0 \\
+        0 & 4
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\det{(AA^\top - \lambda I)} &= 0 \\
+\det{\begin{bmatrix}
+        25-\lambda & 0 \\
+        0 & 4-\lambda
+    \end{bmatrix}} &= 0
+\end{align*}
+
+\( (25 - \lambda)(4 - \lambda) = 0) \)
+
+Eigenvalues: \( \lambda_1 = 25, \lambda_2 = 4 \)
+
+Singular Values: \( \sigma_1 = 5, \sigma_2 = 2 \)
+
+\begin{align*}
+\Sigma = {\begin{bmatrix}
+        5 & 0 \\
+        0 & 2
+    \end{bmatrix}}
+\end{align*}
+
+% left singular eignvectors (U = AA^T)
+Calculate eignvectors of \( AA^\top \):
+
+Eigenvector for \( \lambda_1 = 25 \)
+\begin{align*}
+    \begin{bmatrix}
+        25-25 & 0 \\
+        0 & 4-25
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        0 & 0 \\
+        0 & -21
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    u_1
+    &= \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 4 \)
+\begin{align*}
+    \begin{bmatrix}
+        25-4 & 0 \\
+        0 & 4-4
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{2x} \\ u_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        21 & 0 \\
+        0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{2x} \\ u_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    u_2
+    &= \begin{bmatrix}
+        0 \\ 1
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+U = {\begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}}
+\end{align*}
+
+% right singular vectors (V = A^TA)
+Calculate eignvectors of \( A^\top A \):
+
+Eigenvector for \( \lambda_1 = 25 \)
+\begin{align*}
+    \begin{bmatrix}
+        25-25 & 0 \\
+        0 & 4-25
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{1x} \\ v_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        0 & 0 \\
+        0 & -21
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{1x} \\ v_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_1
+    &= \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 4 \)
+\begin{align*}
+    \begin{bmatrix}
+        25-4 & 0 \\
+        0 & 4-4
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{2x} \\ v_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        21 & 0 \\
+        0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{2x} \\ v_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_2
+    &= \begin{bmatrix}
+        0 \\ 1
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+V = {\begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}}
+\end{align*}
+
+% final solution
+\begin{align*}
+A = U \Sigma V^\top
+= \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        5 & 0 \\
+        0 & 2
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}
+\end{align*}
+
+\noindent\dotfill Exercise 1B \noindent\dotfill
+
+\begin{align*}
+    \mathbf{A} 
+    = \begin{bmatrix}
+        2 & 0 \\
+        0 & 5
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A^\top} 
+    = \begin{bmatrix}
+        2 & 0 \\
+        0 & 5
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A A^\top} 
+    = \begin{bmatrix}
+        4 & 0 \\
+        0 & 25
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\det{(AA^\top - \lambda I)} &= 0
+\det{\begin{bmatrix}
+        4-\lambda & 0 \\
+        0 & 25-\lambda
+    \end{bmatrix}} &= 0
+\end{align*}
+
+\( (4 - \lambda)(25 - \lambda) = 0 \)
+
+Eigenvalues: \( \lambda_1 = 4, \lambda_2 = 25 \)
+
+Singular Values: \( \sigma_1 = 2, \sigma_2 = 5 \)
+
+\begin{align*}
+\Sigma = {\begin{bmatrix}
+        5 & 0 \\
+        0 & 2
+    \end{bmatrix}}
+\end{align*}
+
+% left singular eignvectors (U = AA^T)
+Calculate eignvectors of \( AA^\top \):
+
+Eigenvector for \( \lambda_1 = 4 \)
+\begin{align*}
+    \begin{bmatrix}
+        4-4 & 0 \\
+        0 & 25-4
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        0 & 0 \\
+        0 & 21
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    u_1
+    &= \begin{bmatrix}
+        0 \\ 1
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 25 \)
+\begin{align*}
+    \begin{bmatrix}
+        4-25 & 0 \\
+        0 & 25-25
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{2x} \\ u_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        -21 & 0 \\
+        0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{2x} \\ u_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    u_2
+    &= \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+U = {\begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix}}
+\end{align*}
+
+% right singular vectors (V = A^TA)
+Calculate eignvectors of \( A^\top A \):
+
+Eigenvector for \( \lambda_1 = 4 \)
+\begin{align*}
+    \begin{bmatrix}
+        4-4 & 0 \\
+        0 & 25-4
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{1x} \\ v_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        0 & 0 \\
+        0 & 21
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{1x} \\ v_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_1
+    &= \begin{bmatrix}
+        0 \\ 1
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 25 \)
+\begin{align*}
+    \begin{bmatrix}
+        4-25 & 0 \\
+        0 & 25-25
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{2x} \\ v_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        -21 & 0 \\
+        0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{2x} \\ v_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_2
+    &= \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+V = {\begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix}}
+\end{align*}
+
+% final solution
+\begin{align*}
+A = U \Sigma V^\top
+= \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        5 & 0 \\
+        0 & 2
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix}
+\end{align*}
+
+\noindent\dotfill Exercise 1C \noindent\dotfill
+
+\begin{align*}
+    \mathbf{A} 
+    = \begin{bmatrix}
+        0 & 3 \\
+        0 & 0 \\
+        0 & 0
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A^\top} 
+    = \begin{bmatrix}
+        0 & 0 & 0 \\
+        3 & 0 & 0
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A A^\top} 
+    = \begin{bmatrix}
+        9 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\det{(AA^\top - \lambda I)} &= 0 \\
+\det{\begin{bmatrix}
+        9-\lambda & 0 & 0 \\
+        0 & 0-\lambda & 0 \\
+        0 & 0 & 0-\lambda
+    \end{bmatrix}} &= 0
+\end{align*}
+
+\( (9 - \lambda)(0 - \lambda)(0 - \lambda) = 0 \)
+
+Eigenvalues: \( \lambda_1 = 9, \lambda_2 = 0 \)
+
+Singular Values: \( \sigma_1 = 3, \sigma_2 = 0 \)
+
+\begin{align*}
+\Sigma = {\begin{bmatrix}
+        3 & 0 \\
+        0 & 0
+    \end{bmatrix}}
+\end{align*}
+
+% left singular eignvectors (U = AA^T)
+Calculate eignvectors of \( AA^\top \):
+
+Eigenvector for \( \lambda_1 = 3 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        9-3 & 0 & 0 \\
+        0 & 0-3 & 0 \\
+        0 & 0 & 0-3
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y} \\ u1_z
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        6 & 0 & 0 \\
+        0 & -3 & 0 \\
+        0 & 0 & -3
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y} \\ u1_z
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0 \\ 0
+    \end{bmatrix} \\
+    u_1
+    &= \begin{bmatrix}
+        1 \\ 0 \\ 0
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 9 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        9-9 & 0 & 0 \\
+        0 & 0-9 & 0 \\
+        0 & 0 & 0-9
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{2x} \\ u_{2y} \\ u2_z
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        0 & 0 & 0 \\
+        0 & -9 & 0 \\
+        0 & 0 & -9
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{2x} \\ u_{2y} \\ u2_z
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0 \\ 0
+    \end{bmatrix} \\
+    u_1
+    &= \begin{bmatrix}
+        1 \\ 0 \\ 0
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 0 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        0-3 & 0 & 0 \\
+        0 & 0-0 & 0 \\
+        0 & 0 & 0-0
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{2x} \\ u_{2y} \\ u2_z
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        -3 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        u2x \\ u_{2y} \\ u2_z
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0 \\ 0
+    \end{bmatrix} \\
+    u
+    &= \begin{bmatrix}
+        0 \\ 1 \\ 1
+    \end{bmatrix}
+\end{align*}
+
+Due to degenerate eigenvalues,
+\begin{align*}
+    u_2
+    = \begin{bmatrix}
+        0 \\ 1 \\ 0
+    \end{bmatrix}
+    \hfill
+    u_3
+    = \begin{bmatrix}
+        0 \\ 0 \\ 1
+    \end{bmatrix} \\
+\end{align*}
+
+\begin{align*}
+U = {\begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}}
+\end{align*}
+
+% right singular vectors (V = A^TA)
+Calculate eignvectors of \( A^\top A \):
+
+Eigenvector for \( \lambda_1 = 9 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        0-9 & 0 \\
+        0 & 9-9
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{1x} \\ v_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        -9 & 0 \\
+        0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{1x} \\ v_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_1
+    &= \begin{bmatrix}
+        0 \\ 1
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 0 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        0-0 & 0 \\
+        0 & 9-0
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{2x} \\ v_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        0 & 0 \\
+        0 & 9
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{2x} \\ v_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_1
+    &= \begin{bmatrix}
+        -1 \\ 0
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+V = {\begin{bmatrix}
+        0 & -1 \\
+        1 & 0
+    \end{bmatrix}}
+\end{align*}
+
+% final solution
+\begin{align*}
+A = U \Sigma V^\top
+= \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        3 & 0 \\
+        0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & 1 \\
+        -1 & 0
+    \end{bmatrix}
+\end{align*}
+
+\noindent\dotfill Exercise 1D \noindent\dotfill
+
+\begin{align*}
+    \mathbf{A} 
+    = \begin{bmatrix}
+        1 & 0 \\
+        1 & 0
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A^\top} 
+    = \begin{bmatrix}
+        1 & 1 \\
+        0 & 0
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A A^\top} 
+    = \begin{bmatrix}
+        1 & 1 \\
+        1 & 1
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\det{(AA^\top - \lambda I)} &= 0 \\
+\det{\begin{bmatrix}
+        1-\lambda & 1 \\
+        1 & 1-\lambda
+    \end{bmatrix}} &= 0
+\end{align*}
+
+\( (1 - \lambda)(1 - \lambda)-(1)(1) = 0 \)
+
+Eigenvalues: \( \lambda_1 = 2, \lambda_2 = 0 \)
+
+Singular Values: \( \sigma_1 = \sqrt{2}, \sigma_2 = 0 \)
+
+\begin{align*}
+\Sigma = {\begin{bmatrix}
+        \sqrt{2} & 0 \\
+        0 & 0
+    \end{bmatrix}}
+\end{align*}
+
+% left singular eignvectors (U = AA^T)
+Calculate eignvectors of \( AA^\top \):
+
+Eigenvector for \( \lambda_1 = 2 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        1-2 & 1 \\
+        1 & 1-2
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    u_1
+    &= \begin{bmatrix}
+        \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 0 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        1-0 & 1 \\
+        1 & 1-0
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{2x} \\ u_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    u_2
+    &= \begin{bmatrix}
+        \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}}
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+U = {\begin{bmatrix}
+        \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+        \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+    \end{bmatrix}}
+\end{align*}
+
+% right singular vectors (V = A^TA)
+Calculate eignvectors of \( A^\top A \):
+
+Eigenvector for \( \lambda_1 = 2 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        2-2 & 0 \\
+        0 & 0-2
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{1x} \\ v_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_1
+    &= \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = 0 \)
+
+\begin{align*}
+    \begin{bmatrix}
+        2-0 & 0 \\
+        0 & 0-0
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{2x} \\ v_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_2
+    &= \begin{bmatrix}
+        0 \\ 1
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+V = {\begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}}
+\end{align*}
+
+% final solution
+\begin{align*}
+A = U \Sigma V^\top
+= \begin{bmatrix}
+        -\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+        \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+    \end{bmatrix}
+    \begin{bmatrix}
+        \sqrt{2} & 0 \\
+        0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}
+\end{align*}
+
+\noindent\dotfill Exercise 1E \noindent\dotfill
+
+\begin{align*}
+    \mathbf{A} 
+    = \begin{bmatrix}
+        2 & 2 \\
+        3 & 2
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A^\top} 
+    = \begin{bmatrix}
+        2 & 3 \\
+        2 & 2
+    \end{bmatrix}
+    \hspace{2cm}
+    \mathbf{A A^\top} 
+    = \begin{bmatrix}
+        8 & 10 \\
+        10 & 3
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\det{(AA^\top - \lambda I)} &= 0 \\
+\det{\begin{bmatrix}
+        8-\lambda & 10 \\
+        10 & 3-\lambda
+    \end{bmatrix}} &= 0
+\end{align*}
+
+\( (8 - \lambda)(3 - \lambda)-(10)(10) = 0 \)
+
+Eigenvalues: \( \lambda_1 = \frac{21+5\sqrt{17}}{2}, \lambda_2 = \frac{21-5\sqrt{17}}{2} \)
+
+Singular Values: \( \sigma_1 = 4.56155281280883, \sigma_2 = 0.4384471871911691 \)
+
+\begin{align*}
+\Sigma = {\begin{bmatrix}
+        4.562 & 0 \\
+        0 & 0.438
+    \end{bmatrix}}
+\end{align*}
+
+% left singular eignvectors (U = AA^T)
+Calculate eignvectors of \( AA^\top \):
+
+Eigenvector for \( \lambda_1 = \frac{21+5\sqrt{17}}{2} \)
+
+\begin{align*}
+    \begin{bmatrix}
+        8-\frac{21+5\sqrt{17}}{2} & 10 \\
+        10 & 3-\frac{21+5\sqrt{17}}{2}
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    u_1
+    &= \begin{bmatrix}
+        -0.615 \\ 0.788
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = \frac{21-5\sqrt{17}}{2} \)
+
+\begin{align*}
+    \begin{bmatrix}
+        8-\frac{21-5\sqrt{17}}{2} & 10 \\
+        10 & 3-\frac{21-5\sqrt{17}}{2}
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1x} \\ u_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    u_2
+    &= \begin{bmatrix}
+        -0.788 \\ 0.615
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+U = {\begin{bmatrix}
+        -0.615 & -0.788 \\
+        0.788 & 0.615
+    \end{bmatrix}}
+\end{align*}
+
+% right singular vectors (V = A^TA)
+Calculate eignvectors of \( A^\top A \):
+
+Eigenvector for \( \lambda_1 = \frac{21+5\sqrt{17}}{2} \)
+
+\begin{align*}
+    \begin{bmatrix}
+        13-\frac{21+5\sqrt{17}}{2} & 10 \\
+        10 & 8-\frac{21+5\sqrt{17}}{2}
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{1x} \\ v_{1y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_1
+    &= \begin{bmatrix}
+        0.788 \\ 0.615
+    \end{bmatrix}
+\end{align*}
+
+Eigenvector for \( \lambda_2 = \frac{21-5\sqrt{17}}{2} \)
+
+\begin{align*}
+    \begin{bmatrix}
+        13-\frac{21-5\sqrt{17}}{2} & 10 \\
+        10 & 8-\frac{21-5\sqrt{17}}{2}
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_{2x} \\ v_{2y}
+    \end{bmatrix}
+    &= \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} \\
+    v_2
+    &= \begin{bmatrix}
+        0.615 \\ 0.788
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+V = {\begin{bmatrix}
+        0.788 & 0.615 \\
+        0.615 & 0.788
+    \end{bmatrix}}
+\end{align*}
+
+% final solution
+\begin{align*}
+A = U \Sigma V^\top
+= \begin{bmatrix}
+        -0.615 & -0.788 \\
+        0.788 & 0.615
+    \end{bmatrix}
+    \begin{bmatrix}
+        4.561 & 0 \\
+        0 & 0.438
+    \end{bmatrix}
+    \begin{bmatrix}
+        0.788 & 0.615 \\
+        0.615 & 0.788
+    \end{bmatrix}
+\end{align*}
+
+\noindent\dotfill Exercise 1F: Python Implementation \noindent\dotfill
+
 \begin{lstlisting}[language=Python]
 import numpy as np
 
@@ -175,6 +1123,8 @@ print(f'svd_d: {svd_d}')
 svd_e = np.linalg.svd(matrix_e)
 print(f'svd_e: {svd_e}')
 \end{lstlisting}
+
+\noindent\dotfill Console Outputs \noindent\dotfill
 
 \begin{lstlisting}
 svd_a: SVDResult(U=array([[1., 0.],
