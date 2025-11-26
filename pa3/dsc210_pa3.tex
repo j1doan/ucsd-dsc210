@@ -18,6 +18,7 @@
 \usepackage{amssymb}
 \usepackage{eucal}
 \usepackage{hyperref}
+\usepackage{pdfpages}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \pagestyle{empty}
 \DeclareMathOperator{\tr}{Tr}
@@ -1177,7 +1178,7 @@ svd_e: SVDResult(U=array([[-0.61541221, -0.78820544],
 The characteristic equation is
 
 \begin{align*}
-\det{(AA^\top - \lambda I)} &= 0 \\
+\det{(A - \lambda I)} &= 0 \\
 \det{\begin{bmatrix}
         -5-\lambda & 3 \\
         6 & 6-\lambda
@@ -1299,6 +1300,26 @@ eigenvector norm: 0.9999999999999999
 
 \noindent\dotfill Exercise 2C \noindent\dotfill
 
+Assume \( A \in \mathbb{R}^{2x2} \) has unique eigenvalues \( \lambda_1 , \lambda_2 \). Let \(Ax_1 = \lambda_1 x_1 \) and \(Ax_2 = \lambda_2 x_2 \). Suppose that with the starting case of \( n = 2 \), that is to say two eigenvectors \( x_1, x_2 \) are linearly independent.
+
+Now, let there exist a scalar c such that \( x_2 = c x_1 \) with c \( \in \mathbb{R} \). This means that it can be substituted into the second equation such that:
+
+\begin{align*}
+Ax_2 &= \lambda_2 x_2 \\
+A(c x_1) &= \lambda_2 (c x_1) \\
+c(A x_1) &= c (\lambda_2 x_1) \\
+(A x_1) &= (\lambda_2 x_1)
+\end{align*}
+
+But this is a contradiction. The assumption has stated that by the definition of eigenvectors, \( Ax_1 = \lambda_1 x_1 \). Also, because \( A = \lambda_1 \) further substition demonstrates the following contradiction:
+
+\begin{align*}
+\lambda_1 x_1 &= \lambda_2 x_2 \\
+x_1 &= x_2
+\end{align*}
+
+which is nonsense if the eigenvectors are linearly independent (one is not a scalar of another). Therefore \( x_1 \) and \( x_2 \) are NOT linearly independent. A similar argument can be made for any case with \( n > 2 \), for any scalar c \( \in \mathbb{R} \).
+
 %%%%%%%%%%%%%%%%%%%%
 \clearpage
 \item[] \textbf{Question 3: Power method (20 points)} \\
@@ -1383,6 +1404,8 @@ Note: For PyTorch reference see \href{https://pytorch.org/docs/stable/index.html
 \end{enumerate}
 \textbf{Solution:}
 \end{enumerate}
+
+\includepdf[pages=-]{dsc210_pa3_addon.pdf}
 
 % \end{enumerate}
 
