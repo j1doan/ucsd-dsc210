@@ -1005,7 +1005,7 @@ Eigenvector for \( \lambda_1 = \frac{21+5\sqrt{17}}{2} \)
     \end{bmatrix} \\
     u_1
     &= \begin{bmatrix}
-        -0.615 \\ 0.788
+        -0.615 \\ -0.788
     \end{bmatrix}
 \end{align*}
 
@@ -1031,7 +1031,7 @@ Eigenvector for \( \lambda_2 = \frac{21-5\sqrt{17}}{2} \)
 \begin{align*}
 U = {\begin{bmatrix}
         -0.615 & -0.788 \\
-        0.788 & 0.615
+        -0.788 & 0.615
     \end{bmatrix}}
 \end{align*}
 
@@ -1053,7 +1053,7 @@ Eigenvector for \( \lambda_1 = \frac{21+5\sqrt{17}}{2} \)
     \end{bmatrix} \\
     v_1
     &= \begin{bmatrix}
-        0.788 \\ 0.615
+        -0.788 \\ -0.615
     \end{bmatrix}
 \end{align*}
 
@@ -1072,14 +1072,14 @@ Eigenvector for \( \lambda_2 = \frac{21-5\sqrt{17}}{2} \)
     \end{bmatrix} \\
     v_2
     &= \begin{bmatrix}
-        0.615 \\ 0.788
+        0.615 \\ -0.788
     \end{bmatrix}
 \end{align*}
 
 \begin{align*}
 V = {\begin{bmatrix}
-        0.788 & 0.615 \\
-        0.615 & 0.788
+        -0.788 & -0.615 \\
+        0.615 & -0.788
     \end{bmatrix}}
 \end{align*}
 
@@ -1088,15 +1088,15 @@ V = {\begin{bmatrix}
 A = U \Sigma V^\top
 = \begin{bmatrix}
         -0.615 & -0.788 \\
-        0.788 & 0.615
+        -0.788 & 0.615
     \end{bmatrix}
     \begin{bmatrix}
         4.561 & 0 \\
         0 & 0.438
     \end{bmatrix}
     \begin{bmatrix}
-        0.788 & 0.615 \\
-        0.615 & 0.788
+        -0.788 & -0.615 \\
+        0.615 & -0.788
     \end{bmatrix}
 \end{align*}
 
@@ -1280,8 +1280,8 @@ u &= \frac{1}{\sqrt{13}} \begin{bmatrix} 2 \\ 3 \end{bmatrix}
 matrix_A = [[-5, 3], [-6, 6]]
 eigenvalues, eigenvectors = np.linalg.eig(matrix_A)
 print(f'eigenvalues: {eigenvalues}, \neigenvectors: {eigenvectors}')
-print(f'eigenvector norm: {np.linalg.norm(eigenvectors[:, 0])}') # lambda = -12
-print(f'eigenvector norm: {np.linalg.norm(eigenvectors[:, 1])}') # lambda = 1
+print(f'eigenvector norm: {np.linalg.norm(eigenvectors[:, 0])}')
+print(f'eigenvector norm: {np.linalg.norm(eigenvectors[:, 1])}')
 \end{lstlisting}
 
 \begin{lstlisting}
