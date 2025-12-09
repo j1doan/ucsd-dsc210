@@ -1,0 +1,273 @@
+% Contributions are much appreciated, in order to contribute to this project, head over to this repository:
+% https://github.com/bshramin/uofa-eng-assignment
+
+\documentclass[11pt,letterpaper]{article}
+\textwidth 6.5in
+\textheight 9.in
+\oddsidemargin 0in
+\headheight 0in
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig,graphicx}
+\usepackage{multicol,pst-plot}
+\usepackage{pstricks}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\pagestyle{empty}
+\DeclareMathOperator{\tr}{Tr}
+\newcommand*{\op}[1]{\check{\mathbf#1}}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\mean}[1]{\langle #1 \rangle}
+\newcommand{\opvec}[1]{\check{\vec #1}}
+\renewcommand{\sp}[1]{$${\begin{split}#1\end{split}}$$}
+
+\usepackage{lipsum}
+
+\usepackage{listings}
+\usepackage{soul}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\pagestyle{plain}
+
+
+% \begin{flushright}\vspace{-5mm}
+% \includegraphics[height=2cm]{logo.png}
+% \end{flushright}
+ 
+\begin{center}
+\textbf{\Large DSC 210 Numerical Linear Algebra, Fall 2025} \\ \bigskip
+\large{Homework Problems for Topic 4: \textit{ML and Least Squares Problems}} \\  \bigskip
+\begin{flushleft}
+    \large{Student Name (PID):}
+\end{flushleft}
+\end{center}
+\vspace{-4mm}
+\rule{\linewidth}{0.1mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \bigskip
+\bigskip
+
+\begin{enumerate}
+
+\item[] \fbox{%
+\begin{minipage}{0.95\textwidth}
+Write your solutions to the following problems by typing them in \LaTeX. Unless otherwise noted by the
+problem's instructions, show your work and provide justification for
+your answer. Homework is due via Gradescope at 
+\textbf{11th December 2025, 11:59 PM}.
+\\
+\textbf{Late Policy}: If you submit your homework after the deadline we will apply a late penalty of $10\%$ per day.
+
+\item[] \textbf{Guidelines for Homework Related Questions:}
+\begin{enumerate}
+    \item As a general rule, we can help you understand the homework problems and explain the material from the corresponding lectures, but we cannot give you the entire solution.
+    \item Regarding debugging programming questions: We ask you to do some debugging on your own first, including printing out intermediate values in your algorithms, trying a simpler version of the problem, etc.
+    \item We will not be pre-grading the homework, i.e. we won’t confirm if the answer you have is correct.
+\end{enumerate}
+
+\item[] \textbf{AI Usage Policy:}
+\begin{enumerate}
+    \item Code: You may use LLMs to debug your code; however, you may not use LLMs to generate your entire code, and code must be reviewed and tested.
+    \item Writing: You may use LLMs to correct grammar, style and latex issues; however, you may not use LLMs to generate entire solutions, sentences or paragraphs. All writing must be in your own voice.
+\end{enumerate}
+
+\item [] \textbf{Academic Integrity Policy:}
+\begin{enumerate}
+    \item [] The UC San Diego Academic Integrity Policy (formerly the Policy on Integrity of Scholarship) is effective as of September 25, 2023 and applies to any cases originating on or after September 25, 2023. The university expects both faculty and students to honor the policy. For students, this means that all academic work will be done by the individual to whom it's assigned, without unauthorized aid of any kind. If violations of academic integrity occur, the same Sanctioning Guidelines apply regardless of which policy was effective for that case.
+    
+    For more information on how the policy is implemented, refer to the most current procedures. Remember: When in doubt about what constitutes appropriate collaboration or resource use, please ask TAs before proceeding. It's always better to clarify expectations than to risk an academic integrity violation. Academic integrity violations can have serious consequences for your academic record, and you will get zero grades.
+\end{enumerate}
+
+
+
+You can access the Homework Template using the following link: \url{https://www.overleaf.com/read/vfhcmsppvskp}
+\end{minipage}}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%
+\clearpage
+\begin{enumerate}
+%%%%%%%%%%%%%%%
+
+\item[] \textbf{Question 1: Least Squares Regression (10 points)}
+
+Consider a dataset with $m$ datapoints: $(t_i, y_i), i=1,...,m$. We want to minimize least squares by fitting an estimation function $$\hat{y}(t)= at^2+ bt + c $$ on this data. This problem can be written in the form $\mathbf{Ax} = \mathbf{y}$, such that the least squares solution for $\mathbf{x}$ gives the coefficients $a, b, c$.
+
+What are $\mathbf{A}$, $\mathbf{x}$ and $\mathbf{y}$ in terms of the variables above?
+
+\textbf{Solution:}
+
+%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 2: Linear Regression (30 points)}
+%%%%%%%%%%%%%%%
+
+Use a linear regressor to fit the data, where $\hat{y}(t)=at+b$ with $a,b$ being scalars. Let $\mathbf{x} = \begin{bmatrix} a \\ b \end{bmatrix}$ contain the regressor coefficients. Recall that the linear algebraic formula for least squares gives $\mathbf{x} = (A^\top A)^{-1} A^\top \mathbf{y}$ with $A^\dagger=(A^\top A)^{-1} A^\top$ known as the pseudo-inverse of $A$.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Implement 3 different ways to find the regressor coefficients using the \texttt{numpy} package and show that they agree on the random data generated in the notebook (make sure to calculate both $a$ and $b$):
+    \begin{enumerate}[label=\roman*]
+        \item Calculate $\mathbf{x}$ directly from the least squares formula.
+        \item Use the function \texttt{np.linalg.pinv} to find the values of regressor coefficients $\mathbf{x}$.
+        \item Solve the problem using the built-in \texttt{numpy} function: \texttt{np.linalg.lstsq}
+    \end{enumerate}
+    \item Draw a scatter plot between $\mathbf{T}$ and $\mathbf{y}$, and overlay it with the linear regression line.
+\end{enumerate}
+
+\textbf{Solution:}
+We have provided a starter code to generate the datapoints. \textbf{Do not modify the provided code block - } \href{https://colab.research.google.com/drive/1lAyQW20omCqQD04MxgjxkkFCrvm4s_bF?usp=sharing}{google colab link}.
+
+(For all the following questions, make a local copy of the colab notebook. Write the solution in the copy and submit.)
+
+%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 3: Logarithmic Regression (30 points)}
+%%%%%%%%%%%%%%%
+
+\begin{enumerate}[label=(\alph*)]
+    \item Write a function \texttt{my\_func\_fit(T,y)}, where $\mathbf{T}$ and $\mathbf{y}$ are column vectors of the same size containing experimental data. The function should return the values for $\alpha$ and $\beta$ which are the scalar parameters of the estimation function $$\hat{y}(t) = \alpha.t^{\beta}$$
+
+    \emph{Hint}: Minimize least squares in log-space, i.e. $\min \sum_i (\log(\hat{y_i}) - \log(y_i))^2$.
+    
+    \item Test your code on the generated sample dataset and report the coefficients. A starter code to generate the logarithmic dataset is provided in the notebook.
+    \item Plot a graph between $\mathbf{T}$ vs $\mathbf{y}$, and overlay it with the regression line. 
+\end{enumerate}
+\textbf{Note:} You are only allowed to use \texttt{numpy} library functions.
+
+\textbf{Solution:}
+Provide the solution in the notebook \href{https://colab.research.google.com/drive/1lAyQW20omCqQD04MxgjxkkFCrvm4s_bF?usp=sharing}{google colab}.
+
+%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{Question 4: Functional Regression (30 points)}
+%%%%%%%%%%%%%%%
+
+\begin{enumerate}[label=(\alph*)]
+    \item Write a function \texttt{my\_lin\_regression(f, T, y)}, where $f$ is a list containing function objects to pre-defined basis functions and, $\mathbf{T}$ and $\mathbf{y}$ are arrays containing noisy data. Assume that $\mathbf{T}$ and $\mathbf{y}$  are the same size, i.e, $T^{(i)}\in \mathbb{R}, y^{(i)}\in \mathbb{R}$.
+    
+    Return an array $\beta$ which represent the coefficients of the solved problem. We are solving for the $\beta$ which contains the coefficients in the regressor
+    $$\hat{y}(t) = \beta_0 + \beta_1f_1(t) + \dots + \beta_nf_n(t)$$
+    with $f_i$ being the pre-defined basis functions.
+    \item Write a function \texttt{regression\_plot(f,T,y,beta)} which plots a graph between $\mathbf{T}$ and $\mathbf{y}$ , and overlays it with the regression line.
+\end{enumerate}
+Run the provided test scenarios provided in the notebook. First one uses $f = [\sin, \cos]$ and second $f = [\exp]$.
+
+\textbf{Note:} You are only allowed to use \texttt{numpy} library functions.
+
+\textbf{Solution:}
+Provide the solution in the notebook \href{https://colab.research.google.com/drive/1lAyQW20omCqQD04MxgjxkkFCrvm4s_bF?usp=sharing}{google colab}.
+
+% \end{enumerate}
+
+%%%%%%%%%%%%%%%
+\clearpage
+\item[] \textbf{(BONUS)Question 5: Ridge Regression (10 points)}
+%%%%%%%%%%%%%%%
+
+
+Let $A \in \mathbb{R}^{n \times d}$ and $y \in \mathbb{R}^n$, where $ n > d$. Assume that $A$ is rank-deficient, i.e.\ $\operatorname{rank}(A) = r < d$.
+For $\lambda > 0$, consider the ridge regression problem
+\[
+L_\lambda(w) = \|Aw - y\|_2^2 + \lambda \|w\|_2^2, 
+\quad w \in \mathbb{R}^d.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+  \item \textbf{Gradient and Hessian.} 
+  \begin{enumerate}[]
+    \item Compute the gradient $\nabla L_\lambda(w)$.
+    \item Compute the Hessian $H_\lambda = \nabla^2 L_\lambda(w)$.
+  \end{enumerate}
+
+  \item \textbf{Closed-form ridge solution via normal equations.}  
+  Show that any minimizer $w_\lambda^\star$ of $L_\lambda$ satisfies the linear system
+  \[
+  (A^\top A + \lambda I_d)\, w_\lambda^\star = A^\top y,
+  \]
+  and hence
+  \[
+  w_\lambda^\star = (A^\top A + \lambda I_d)^{-1} A^\top y.
+  \]
+
+  \item \textbf{SVD and spectrum of the Hessian.}
+  Let the singular value decomposition (SVD) of $A$ be
+  \[
+  A = U \Sigma V^\top,
+  \]
+  where $U \in \mathbb{R}^{n \times r}$ and $V \in \mathbb{R}^{d \times r}$ have orthonormal columns, and
+  \[
+  \Sigma = \operatorname{diag}(\sigma_1,\dots,\sigma_r), \quad
+  \sigma_1 \ge \dots \ge \sigma_r > 0.
+  \]
+  \begin{enumerate}
+    \item Express $A^\top A$ and $H_\lambda$ in terms of $U$, $\Sigma$, and $V$.
+    \item Show that the eigenvalues of $H_\lambda$ are
+    \[
+    2(\sigma_1^2 + \lambda),\dots,2(\sigma_r^2 + \lambda),
+    \underbrace{2\lambda,\dots,2\lambda}_{d-r\ \text{times}}.
+    \]
+  \end{enumerate}
+
+  \item \textbf{Ridge solution in the SVD basis and relation to the pseudo-inverse.}
+  \begin{enumerate}
+    \item Using the SVD of $A$, derive an explicit formula for $w_\lambda^\star$ of the form
+    \[
+    w_\lambda^\star = \sum_{i=1}^r \alpha_i(\lambda)\, v_i,
+    \]
+    where $v_i$ are the columns of $V$, and identify the coefficients $\alpha_i(\lambda)$ in terms of $\sigma_i$ and $U^\top y$.
+    \item Show that, as $\lambda \to 0^+$,
+    \[
+    w_\lambda^\star \to w_0^\star := A^+ y,
+    \]
+    the minimum-norm least squares solution. Here $A^+ $ is the pseudo-inverse of $A$.
+    
+  \end{enumerate}
+\item Verify the solutions with the code template provided in the notebook. 
+\end{enumerate}
+\textbf{Note:} You are only allowed to use \texttt{numpy} library functions.
+
+\textbf{Solution:}
+Typewrite the solution for parts (a) to (d) in latex and code the solution to (e) in the notebook \href{https://colab.research.google.com/drive/1lAyQW20omCqQD04MxgjxkkFCrvm4s_bF?usp=sharing}{google colab}.
+
+
+
+\end{enumerate}
+
+\end{document}
